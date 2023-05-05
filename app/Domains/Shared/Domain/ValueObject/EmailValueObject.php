@@ -17,7 +17,7 @@ abstract class EmailValueObject
         return new static($value);
     }
 
-    private function assertIsValidEmail(string $value)
+    protected function assertIsValidEmail(string $value)
     {
         if (! filter_var($value, FILTER_VALIDATE_EMAIL) ) {
             throw new InvalidArgumentException(sprintf('`<%s>` does not allow the value `<%s>`.', static::class, $value));

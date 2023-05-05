@@ -30,7 +30,7 @@ final class CustomerCreator
         $customer = $this->repository->findOneBy([
             CustomerModel::FIRST_NAME => $firstName->value,
             CustomerModel::LAST_NAME => $lastName->value,
-            CustomerModel::PHONE_NUMBER => $phoneNumber->value
+            CustomerModel::DATE_OF_BIRTH => $dateOfBirth->value
         ]);
 
         if (null !== $customer) {

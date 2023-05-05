@@ -55,4 +55,9 @@ abstract class PhoneValueObject
 
         return $phoneUtil->isValidNumber($number);
     }
+
+    public static function random()
+    {
+        return fake()->numberBetween(4444444444, 9999999999);
+    }
 }

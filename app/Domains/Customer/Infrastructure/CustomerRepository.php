@@ -101,7 +101,7 @@ class CustomerRepository implements CustomerRepositoryInterface
         $customerModel->{CustomerModel::FIRST_NAME} = $customer->firstName->value;
         $customerModel->{CustomerModel::LAST_NAME} = $customer->lastName->value;
         $customerModel->{CustomerModel::DATE_OF_BIRTH} = $customer->dateOfBirth->value;
-        $customerModel->{CustomerModel::PHONE_NUMBER} = $customer->phoneNumber->value;
+        $customerModel->{CustomerModel::PHONE_NUMBER} = str_replace(['-','(',')',' ','/','\\'], '',  $customer->phoneNumber->value);
         $customerModel->{CustomerModel::EMAIL} = $customer->email->value;
         $customerModel->{CustomerModel::BANK_ACCOUNT_NUMBER} = $customer->bankAccountNumber->value;
 

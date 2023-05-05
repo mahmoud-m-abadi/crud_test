@@ -2,6 +2,8 @@
 
 namespace App\Domains\Customer\Infrastructure;
 
+use App\Domains\Shared\Domain\ValueObject\BankAccountValueObject;
+use App\Domains\Shared\Domain\ValueObject\PhoneValueObject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -19,10 +21,10 @@ class CustomerModelFactory extends Factory
         return [
             CustomerModel::FIRST_NAME => fake()->name(),
             CustomerModel::LAST_NAME => fake()->lastName(),
-            CustomerModel::EMAIL => ake()->unique()->safeEmail(),
+            CustomerModel::EMAIL => fake()->unique()->safeEmail(),
             CustomerModel::DATE_OF_BIRTH => now()->subYears(20)->format('Y-m-d'),
             CustomerModel::PHONE_NUMBER => str_replace(['-','(',')',' ','/','\\'], '', fake()->phoneNumber),
-            CustomerModel::BANK_ACCOUNT_NUMBER => fake()->numberBetween(555555555, 999999999),
+            CustomerModel::BANK_ACCOUNT_NUMBER => BankAccountValueObject::random(),
         ];
     }
 }
