@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domains\Shared\Domain\Bus\Event;
 
-use App\Domains\Shared\Domain\ValueObject\UuidValueObject;
 use DateTimeImmutable;
+use Illuminate\Support\Str;
 
 abstract class AbstractDomainEvent
 {
@@ -13,10 +13,10 @@ abstract class AbstractDomainEvent
     private string $eventId;
     private string $occurredOn;
 
-    public function __construct(string $aggregateId, string $eventId = null, string $occurredOn = null)
+    public function __construct(string $eventId = null, string $occurredOn = null)
     {
-        $this->aggregateId = $aggregateId;
-        $this->eventId = $eventId ?: UuidValueObject::random()->value;
+        $this->aggregateId = Str::uuid()->toString();
+        $this->eventId = $eventId ?: Str::random();
         $this->occurredOn = $occurredOn ?: (new DateTimeImmutable())->format('Y-m-d H:i:s.u T');
     }
 

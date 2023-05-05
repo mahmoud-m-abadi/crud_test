@@ -28,7 +28,7 @@ class CustomerRepository implements CustomerRepositoryInterface
     private function toDomain(CustomerModel $eloquentCustomerModel): Customer
     {
         return Customer::fromPrimitives(
-            $eloquentCustomerModel->id,
+            $eloquentCustomerModel->id ?? null,
             $eloquentCustomerModel->first_name,
             $eloquentCustomerModel->last_name,
             $eloquentCustomerModel->date_of_birth,
@@ -82,7 +82,7 @@ class CustomerRepository implements CustomerRepositoryInterface
             ->where($wheres)
             ->first();
 
-        return $this->toDomain($customer);
+        return is_null($customer) ? null : $this->toDomain($customer);
     }
 
     /**
@@ -90,20 +90,20 @@ class CustomerRepository implements CustomerRepositoryInterface
      *
      * @throws EloquentException
      */
-    public function save(Customer $board): void
+    public function save(Customer $customer): void
     {
-        $customerModel = $this->model->find($board->id->value);
+        $customerModel = $this->model->find(optional($customer->id)->value ?? 0);
 
         if (null === $customerModel) {
             $customerModel = new CustomerModel();
         }
 
-        $customerModel->{CustomerModel::FIRST_NAME} = $board->firstName->value;
-        $customerModel->{CustomerModel::LAST_NAME} = $board->lastName->value;
-        $customerModel->{CustomerModel::DATE_OF_BIRTH} = $board->dateOfBirth->value;
-        $customerModel->{CustomerModel::PHONE_NUMBER} = $board->phoneNumber->value;
-        $customerModel->{CustomerModel::EMAIL} = $board->email->value;
-        $customerModel->{CustomerModel::BANK_ACCOUNT_NUMBER} = $board->bankAccountNumber->value;
+        $customerModel->{CustomerModel::FIRST_NAME} = $customer->firstName->value;
+        $customerModel->{CustomerModel::LAST_NAME} = $customer->lastName->value;
+        $customerModel->{CustomerModel::DATE_OF_BIRTH} = $customer->dateOfBirth->value;
+        $customerModel->{CustomerModel::PHONE_NUMBER} = $customer->phoneNumber->value;
+        $customerModel->{CustomerModel::EMAIL} = $customer->email->value;
+        $customerModel->{CustomerModel::BANK_ACCOUNT_NUMBER} = $customer->bankAccountNumber->value;
 
         DB::beginTransaction();
         try {

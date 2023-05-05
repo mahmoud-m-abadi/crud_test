@@ -17,6 +17,8 @@ final class CustomerModel extends Model
     const EMAIL = 'email';
     const BANK_ACCOUNT_NUMBER = 'bank_account_number';
 
+    protected $table = self::TABLE;
+
     public function __construct(array $attributes = [])
     {
         if (app()->environment() === 'testing') {

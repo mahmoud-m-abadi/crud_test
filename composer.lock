@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1089abb9a28849d91ec179bf3fdc80b",
+    "content-hash": "b19d5390ee517d6fc1f0772794a9df38",
     "packages": [
         {
             "name": "brick/math",
@@ -504,132 +504,6 @@
             "time": "2022-02-20T15:07:15+00:00"
         },
         {
-            "name": "giggsey/libphonenumber-for-php",
-            "version": "8.13.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "e2395dadce92f139fc6ec71bfe8ae46a2e942944"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/e2395dadce92f139fc6ec71bfe8ae46a2e942944",
-                "reference": "e2395dadce92f139fc6ec71bfe8ae46a2e942944",
-                "shasum": ""
-            },
-            "require": {
-                "giggsey/locale": "^1.7|^2.0",
-                "php": ">=5.3.2",
-                "symfony/polyfill-mbstring": "^1.17"
-            },
-            "require-dev": {
-                "pear/pear-core-minimal": "^1.9",
-                "pear/pear_exception": "^1.0",
-                "pear/versioncontrol_git": "^0.5",
-                "phing/phing": "^2.7",
-                "php-coveralls/php-coveralls": "^1.0|^2.0",
-                "symfony/console": "^2.8|^3.0|^v4.4|^v5.2",
-                "symfony/phpunit-bridge": "^4.2 || ^5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "8.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "libphonenumber\\": "src/"
-                },
-                "exclude-from-classmap": [
-                    "/src/data/",
-                    "/src/carrier/data/",
-                    "/src/geocoding/data/",
-                    "/src/timezone/data/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Joshua Gigg",
-                    "email": "giggsey@gmail.com",
-                    "homepage": "https://giggsey.com/"
-                }
-            ],
-            "description": "PHP Port of Google's libphonenumber",
-            "homepage": "https://github.com/giggsey/libphonenumber-for-php",
-            "keywords": [
-                "geocoding",
-                "geolocation",
-                "libphonenumber",
-                "mobile",
-                "phonenumber",
-                "validation"
-            ],
-            "support": {
-                "issues": "https://github.com/giggsey/libphonenumber-for-php/issues",
-                "source": "https://github.com/giggsey/libphonenumber-for-php"
-            },
-            "time": "2023-04-27T11:06:55+00:00"
-        },
-        {
-            "name": "giggsey/locale",
-            "version": "2.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/giggsey/Locale.git",
-                "reference": "a6b33dfc9e8949b7e28133c4628b29cd9f1850bb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/Locale/zipball/a6b33dfc9e8949b7e28133c4628b29cd9f1850bb",
-                "reference": "a6b33dfc9e8949b7e28133c4628b29cd9f1850bb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "ext-json": "*",
-                "pear/pear-core-minimal": "^1.9",
-                "pear/pear_exception": "^1.0",
-                "pear/versioncontrol_git": "^0.5",
-                "phing/phing": "^2.7",
-                "php-coveralls/php-coveralls": "^2.0",
-                "phpunit/phpunit": "^8.5|^9.5",
-                "symfony/console": "^5.0|^6.0",
-                "symfony/filesystem": "^5.0|^6.0",
-                "symfony/finder": "^5.0|^6.0",
-                "symfony/process": "^5.0|^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Giggsey\\Locale\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Joshua Gigg",
-                    "email": "giggsey@gmail.com",
-                    "homepage": "https://giggsey.com/"
-                }
-            ],
-            "description": "Locale functions required by libphonenumber-for-php",
-            "support": {
-                "issues": "https://github.com/giggsey/Locale/issues",
-                "source": "https://github.com/giggsey/Locale/tree/2.4"
-            },
-            "time": "2023-04-13T07:40:58+00:00"
-        },
-        {
             "name": "graham-campbell/result-type",
             "version": "v1.1.1",
             "source": {
@@ -1102,62 +976,6 @@
                 }
             ],
             "time": "2021-10-07T12:57:01+00:00"
-        },
-        {
-            "name": "lambdish/phunctional",
-            "version": "v2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Lambdish/phunctional.git",
-                "reference": "ed3482e7da134d886789abb33c6df22a5d2f271c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Lambdish/phunctional/zipball/ed3482e7da134d886789abb33c6df22a5d2f271c",
-                "reference": "ed3482e7da134d886789abb33c6df22a5d2f271c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^0.11.16",
-                "phpunit/phpunit": "^8.4"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/_bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Eloi Poch"
-                },
-                {
-                    "name": "Jorge Ávila"
-                },
-                {
-                    "name": "Rafa Gómez"
-                }
-            ],
-            "description": "λ PHP functional library",
-            "keywords": [
-                "functional",
-                "generator",
-                "lambda",
-                "library",
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/Lambdish/phunctional/issues",
-                "source": "https://github.com/Lambdish/phunctional/tree/v2.1.0"
-            },
-            "time": "2020-09-18T07:22:08+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3955,93 +3773,6 @@
             "homepage": "https://symfony.com",
             "support": {
                 "source": "https://github.com/symfony/mailer/tree/v6.2.8"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-03-14T15:00:05+00:00"
-        },
-        {
-            "name": "symfony/messenger",
-            "version": "v6.2.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/messenger.git",
-                "reference": "f54eef78d500309bbc51291f8a353b4b0afef8c1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/messenger/zipball/f54eef78d500309bbc51291f8a353b4b0afef8c1",
-                "reference": "f54eef78d500309bbc51291f8a353b4b0afef8c1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "psr/log": "^1|^2|^3"
-            },
-            "conflict": {
-                "symfony/event-dispatcher": "<5.4",
-                "symfony/event-dispatcher-contracts": "<2",
-                "symfony/framework-bundle": "<5.4",
-                "symfony/http-kernel": "<5.4",
-                "symfony/serializer": "<5.4"
-            },
-            "require-dev": {
-                "psr/cache": "^1.0|^2.0|^3.0",
-                "symfony/console": "^5.4|^6.0",
-                "symfony/dependency-injection": "^5.4|^6.0",
-                "symfony/event-dispatcher": "^5.4|^6.0",
-                "symfony/http-kernel": "^5.4|^6.0",
-                "symfony/process": "^5.4|^6.0",
-                "symfony/property-access": "^5.4|^6.0",
-                "symfony/rate-limiter": "^5.4|^6.0",
-                "symfony/routing": "^5.4|^6.0",
-                "symfony/serializer": "^5.4|^6.0",
-                "symfony/service-contracts": "^1.1|^2|^3",
-                "symfony/stopwatch": "^5.4|^6.0",
-                "symfony/validator": "^5.4|^6.0"
-            },
-            "suggest": {
-                "enqueue/messenger-adapter": "For using the php-enqueue library as a transport."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Messenger\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Samuel Roze",
-                    "email": "samuel.roze@gmail.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Helps applications send and receive messages to/from other applications or via message queues",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/messenger/tree/v6.2.8"
             },
             "funding": [
                 {
@@ -8022,6 +7753,148 @@
             "funding": [
                 {
                     "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-05-04T13:54:49+00:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v6.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "61916f3861b1e9705b18cfde723921a71dd1559d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/61916f3861b1e9705b18cfde723921a71dd1559d",
+                "reference": "61916f3861b1e9705b18cfde723921a71dd1559d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "conflict": {
+                "symfony/console": "<5.4"
+            },
+            "require-dev": {
+                "symfony/console": "^5.4|^6.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "bin": [
+                "Resources/bin/yaml-lint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Loads and dumps YAML files",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/yaml/tree/v6.2.10"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-04-28T13:25:36+00:00"
+        },
+        {
+            "name": "theseer/tokenizer",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theseer/tokenizer.git",
+                "reference": "34a41e998c2183e22995f158c581e7b5e755ab9e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/34a41e998c2183e22995f158c581e7b5e755ab9e",
+                "reference": "34a41e998c2183e22995f158c581e7b5e755ab9e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": "^7.2 || ^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Arne Blankerts",
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
+            "support": {
+                "issues": "https://github.com/theseer/tokenizer/issues",
+                "source": "https://github.com/theseer/tokenizer/tree/1.2.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/theseer",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-07-28T10:34:58+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": {
+        "php": "^8.2"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
+"url": "https://github.com/spatie",
                     "type": "github"
                 }
             ],
