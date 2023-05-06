@@ -18,13 +18,12 @@ class CustomerWasUpdated extends AbstractDomainEvent
         string $eventId = null,
         string $occurredOn = null
     ) {
-        parent::__construct($eventId, $occurredOn);
+        parent::__construct($id, $eventId, $occurredOn);
     }
 
-    public static function fromPrimitives(string $aggregateId, array $body, string $eventId, string $occurredOn): AbstractDomainEvent
+    public static function fromPrimitives(int|string|null $aggregateId, array $body, string $eventId, string $occurredOn): AbstractDomainEvent
     {
         return new self(
-            $body[CustomerModel::ID],
             $body[CustomerModel::FIRST_NAME],
             $body[CustomerModel::LAST_NAME],
             $body[CustomerModel::DATE_OF_BIRTH],
@@ -44,7 +43,6 @@ class CustomerWasUpdated extends AbstractDomainEvent
     public function toPrimitives(): array
     {
         return [
-            'id' => $this->id,
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
             'dateOfBirth' => $this->dateOfBirth,

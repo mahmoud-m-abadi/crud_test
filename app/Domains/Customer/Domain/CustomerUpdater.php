@@ -36,7 +36,7 @@ final class CustomerUpdater
         CustomerBankAccountNumber $bankAccountNumber
     ): void
     {
-        $customer = $this->repository->findOneBy([CustomerModel::ID => $id]);
+        $customer = $this->repository->findOneBy([CustomerModel::ID => $id->value]);
 
         if(null === $customer) {
             throw new CustomerNotFound();

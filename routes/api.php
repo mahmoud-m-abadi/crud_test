@@ -2,13 +2,16 @@
 
 use App\Http\Controllers\Customer\CreateCustomerAction;
 use App\Http\Controllers\Customer\DeleteCustomerAction;
+use App\Http\Controllers\Customer\GetCustomerAction;
+use App\Http\Controllers\Customer\SearchCustomersAction;
+use App\Http\Controllers\Customer\UpdateCustomerAction;
 
 Route::middleware(['api'])->prefix('api/v1')->group(function() {
-    Route::prefix('customers')->group(function() {
-        Route::post('/', CreateCustomerAction::class)->name('customers.store');
-//        Route::get('/{id}', GetBoardByIdController::class);
-//        Route::patch('/{id}', UpdateBoardController::class);
-        Route::delete('/{customerId}', DeleteCustomerAction::class)->name('customers.destroy');
-//        Route::get('/', SearchBoardsController::class);
+    Route::group(['as' => 'customers.', 'name' => 'customers', 'prefix' => 'customers'], function() {
+        Route::get('/', SearchCustomersAction::class)->name('index');
+        Route::post('/', CreateCustomerAction::class)->name('store');
+        Route::get('/{id}', GetCustomerAction::class)->name('show');
+        Route::patch('/{id}', UpdateCustomerAction::class)->name('update');
+        Route::delete('/{customerId}', DeleteCustomerAction::class)->name('destroy');
     });
 });

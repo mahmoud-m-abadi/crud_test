@@ -6,6 +6,7 @@ use App\Domains\Customer\Domain\CustomerAlreadyExists;
 use App\Domains\Customer\Infrastructure\CustomerModel;
 use App\Domains\Shared\Domain\ValueObject\BankAccountValueObject;
 use App\Domains\Shared\Infrastructure\Eloquent\EloquentException;
+use Illuminate\Http\Response;
 use InvalidArgumentException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -17,10 +18,6 @@ class CreateTest extends TestCase
 
     public function test_not_create_customer_with_invalid_phone_number(): void
     {
-        $this->withoutExceptionHandling();
-
-        $this->expectException(InvalidArgumentException::class);
-
         $response = $this->postJson(route('customers.store'), $data = [
             CustomerModel::FIRST_NAME =>  fake()->firstName(),
             CustomerModel::LAST_NAME =>  fake()->lastName(),
@@ -29,6 +26,8 @@ class CreateTest extends TestCase
             CustomerModel::BANK_ACCOUNT_NUMBER =>  BankAccountValueObject::random(),
             CustomerModel::PHONE_NUMBER => "+54218184848",
         ]);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function test_not_create_customer_when_already_added_by_firstName_lastName_dateOfBirth(): void
@@ -77,11 +76,7 @@ class CreateTest extends TestCase
 
     public function test_not_create_customer_when_an_invalid_bank_account_number_entered(): void
     {
-        $this->withoutExceptionHandling();
-
-        $this->expectException(InvalidArgumentException::class);
-
-        $this->postJson(route('customers.store'), $data = [
+        $response = $this->postJson(route('customers.store'), $data = [
             CustomerModel::FIRST_NAME =>  fake()->firstName(),
             CustomerModel::LAST_NAME =>  fake()->lastName(),
             CustomerModel::DATE_OF_BIRTH =>  fake()->date('Y-m-d'),
@@ -89,6 +84,8 @@ class CreateTest extends TestCase
             CustomerModel::BANK_ACCOUNT_NUMBER => fake()->numberBetween(11,22),
             CustomerModel::PHONE_NUMBER => $this->phoneNumber,
         ]);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function test_create_customer_successful(): void

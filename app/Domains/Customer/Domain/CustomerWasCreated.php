@@ -17,10 +17,10 @@ class CustomerWasCreated extends AbstractDomainEvent
         string $eventId = null,
         string $occurredOn = null
     ) {
-        parent::__construct($eventId, $occurredOn);
+        parent::__construct(null, $eventId, $occurredOn);
     }
 
-    public static function fromPrimitives(string $aggregateId, array $body, string $eventId, string $occurredOn): AbstractDomainEvent
+    public static function fromPrimitives(int|string|null $aggregateId, array $body, string $eventId, string $occurredOn): AbstractDomainEvent
     {
         return new self(
             $body[CustomerModel::FIRST_NAME],

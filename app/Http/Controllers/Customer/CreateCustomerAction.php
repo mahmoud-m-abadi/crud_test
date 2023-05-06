@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Domains\Customer\Application\Create\CreateCustomerCommand;
 use App\Domains\Customer\Infrastructure\CustomerModel;
 use App\Domains\Shared\Domain\Bus\Command\CommandBusInterface;
+use App\Http\Requests\Customer\StoreCustomerRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -25,7 +26,7 @@ final class CreateCustomerAction
      *     @OA\PathItem(path="customers", description="Save a new customer"),
      * )
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(StoreCustomerRequest $request): JsonResponse
     {
         $this->commandBus->dispatch(
             new CreateCustomerCommand(

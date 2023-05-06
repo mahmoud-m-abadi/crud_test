@@ -11,7 +11,7 @@ class UpdateCustomerCommand implements CommandInterface
         public readonly string $firstName,
         public readonly string $lastName,
         public readonly string $dateOfBirth,
-        public readonly int $phoneNumber,
+        public readonly string $phoneNumber,
         public readonly string $email,
         public readonly int $bankAccountNumber
     )

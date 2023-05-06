@@ -6,7 +6,7 @@ use App\Domains\Customer\Domain\Customer;
 use App\Domains\Customer\Infrastructure\CustomerModel;
 use App\Domains\Shared\Domain\Bus\Query\ResponseInterface;
 
-class CustomerResponse implements ResponseInterface
+final class CustomerResponse implements ResponseInterface
 {
     public function __construct(
         public readonly int $id,
@@ -29,6 +29,17 @@ class CustomerResponse implements ResponseInterface
     }
 
     public function jsonSerialize(): mixed
+    {
+        return [
+            CustomerModel::ID => $this->id,
+            CustomerModel::FIRST_NAME => $this->firstName,
+            CustomerModel::LAST_NAME => $this->lastName,
+            CustomerModel::EMAIL => $this->email,
+            CustomerModel::PHONE_NUMBER => $this->phoneNumber,
+        ];
+    }
+
+    public function toArray()
     {
         return [
             CustomerModel::ID => $this->id,

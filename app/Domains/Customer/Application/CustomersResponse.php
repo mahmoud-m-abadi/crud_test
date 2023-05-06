@@ -4,8 +4,9 @@ namespace App\Domains\Customer\Application;
 
 use App\Domains\Customer\Domain\Customer;
 use App\Domains\Customer\Domain\Customers;
+use App\Domains\Shared\Domain\Bus\Query\ResponseInterface;
 
-class CustomersResponse
+class CustomersResponse implements ResponseInterface
 {
     /**
      * @param array<CustomerResponse> $customers
