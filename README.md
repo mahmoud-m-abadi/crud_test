@@ -1,3 +1,13 @@
+## Installation
+- RUN `docker-compose up --build -d`
+- RUN `docker exec crud_php /application/sh bash.sh`
+
+## Run Project
+- To see UI: http://localhost:43000
+- To see Swagger: http://localhost:43000/api/documentation
+
+
+### Company's Description
 # Laravel CRUD Test Assignment
 
 Please read each note very carefully!
