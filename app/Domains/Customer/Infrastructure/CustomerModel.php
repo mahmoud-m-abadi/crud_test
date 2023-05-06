@@ -10,6 +10,7 @@ final class CustomerModel extends Model
     use HasFactory;
 
     const TABLE = 'customers';
+    const ID = 'id';
     const FIRST_NAME = 'first_name';
     const LAST_NAME = 'last_name';
     const DATE_OF_BIRTH = 'date_of_birth';

@@ -4,6 +4,12 @@ namespace App\Domains\Customer\Domain;
 
 use App\Domains\Shared\Domain\Aggregate\AggregateRoot;
 
+/**
+ * @OA\Info(
+ *     version="1.0",
+ *     title="CRUD test API"
+ * )
+ */
 final class Customer extends AggregateRoot
 {
     public function __construct(
@@ -57,6 +63,39 @@ final class Customer extends AggregateRoot
              $bankAccountNumber
         );
         $customer->record(new CustomerWasCreated(
+            $firstName->value,
+            $lastName->value,
+            $dateOfBirth->value,
+            $phoneNumber->value,
+            $email->value,
+            $bankAccountNumber->value,
+        ));
+
+        return $customer;
+    }
+
+
+    public static function update(
+        CustomerId $id,
+        CustomerFirstName $firstName,
+        CustomerLastName $lastName,
+        CustomerDateOfBirth $dateOfBirth,
+        CustomerPhoneNumber $phoneNumber,
+        CustomerEmail $email,
+        CustomerBankAccountNumber $bankAccountNumber
+    ): Customer
+    {
+        $customer = new self(
+            $id,
+            $firstName,
+            $lastName,
+            $dateOfBirth,
+            $phoneNumber,
+            $email,
+            $bankAccountNumber
+        );
+        $customer->record(new CustomerWasUpdated(
+            $id->value,
             $firstName->value,
             $lastName->value,
             $dateOfBirth->value,

@@ -34,5 +34,5 @@ interface CustomerRepositoryInterface
      *
      * @throws EloquentException
      */
-    public function save(Customer $board): void;
+    public function save(Customer $customer): void;
 }

@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-final class CreateCustomerController
+final class CreateCustomerAction
 {
     public function __construct(
         private CommandBusInterface $commandBus
@@ -17,6 +17,14 @@ final class CreateCustomerController
     {
     }
 
+    /**
+     * @OA\POST(
+     *     path="/customers",
+     *     description="Save a new customer",
+     *     @OA\Response(response="JsonResponse", description="Save Customer"),
+     *     @OA\PathItem(path="customers", description="Save a new customer"),
+     * )
+     */
     public function __invoke(Request $request): JsonResponse
     {
         $this->commandBus->dispatch(
