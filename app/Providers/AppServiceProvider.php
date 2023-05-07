@@ -8,6 +8,7 @@ use App\Domains\Shared\Domain\Bus\Query\QueryBusInterface;
 use App\Domains\Shared\Infrastructure\Bus\Messenger\MessengerCommandBus;
 use App\Domains\Shared\Infrastructure\Bus\Messenger\MessengerEventBus;
 use App\Domains\Shared\Infrastructure\Bus\Messenger\MessengerQueryBus;
+use App\Domains\Shared\Infrastructure\Services\GooglePhoneValidationInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,6 +36,13 @@ class AppServiceProvider extends ServiceProvider
             CommandBusInterface::class,
             function ($app) {
                 return new MessengerCommandBus($app->tagged('command_handler'));
+            }
+        );
+
+        $this->app->singleton(
+            GooglePhoneValidationInterface::class,
+            function ($app) {
+                return \libphonenumber\PhoneNumberUtil::getInstance();
             }
         );
     }

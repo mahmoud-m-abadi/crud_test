@@ -7,6 +7,7 @@ use App\Domains\Customer\Domain\CustomerNotFound;
 use App\Domains\Customer\Infrastructure\CustomerModel;
 use App\Domains\Shared\Domain\ValueObject\BankAccountValueObject;
 use App\Domains\Shared\Infrastructure\Eloquent\EloquentException;
+use Illuminate\Http\Response;
 use InvalidArgumentException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -19,9 +20,6 @@ class UpdateTest extends TestCase
 
     public function test_not_update_a_customer_on_not_found(): void
     {
-        $this->withoutExceptionHandling();
-        $this->expectException(CustomerNotFound::class);
-
         $customer = CustomerModel::factory()->create([
             CustomerModel::PHONE_NUMBER => $this->phoneNumber
         ]);
@@ -36,7 +34,8 @@ class UpdateTest extends TestCase
                 CustomerModel::DATE_OF_BIRTH => $customer->{CustomerModel::DATE_OF_BIRTH},
                 CustomerModel::BANK_ACCOUNT_NUMBER => $customer->{CustomerModel::BANK_ACCOUNT_NUMBER},
             ]
-        );
+        )
+        ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function test_update_a_customer_successfully(): void

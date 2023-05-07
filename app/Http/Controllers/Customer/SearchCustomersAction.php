@@ -16,6 +16,24 @@ class SearchCustomersAction
     {
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/v1/customers",
+     *     tags={"customers"},
+     *     summary="Show a list of customers",
+     *     description="Show a list of customers",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Returns array json of customers",
+     *         @OA\JsonContent(
+     *             type="json",
+     *             example="{customers:[]}",
+     *             description="successful operation",
+     *         )
+     *     )
+     * )
+     *
+     */
     public function __invoke(Request $request): JsonResponse
     {
         $customers = $this->queryBus->ask(

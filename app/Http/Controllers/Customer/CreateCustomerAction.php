@@ -18,14 +18,84 @@ final class CreateCustomerAction
     {
     }
 
-    /**
-     * @OA\POST(
-     *     path="/customers",
-     *     description="Save a new customer",
-     *     @OA\Response(response="JsonResponse", description="Save Customer"),
-     *     @OA\PathItem(path="customers", description="Save a new customer"),
-     * )
-     */
+   /**
+    * @OA\Post(
+    *     path="/api/v1/customers",
+    *     tags={"customers"},
+    *     summary="Create a new customer",
+    *     description="Create a new customer",
+    *     @OA\Parameter(
+    *         name="first_name",
+    *         in="query",
+    *         description="first name of customer",
+    *         required=true,
+    *         @OA\Schema(
+    *             type="string"
+    *         )
+    *     ),
+    *     @OA\Parameter(
+    *         name="last_name",
+    *         in="query",
+    *         description="last name of customer",
+    *         required=true,
+    *         @OA\Schema(
+    *             type="string"
+    *         )
+    *     ),
+    *     @OA\Parameter(
+    *         name="date_of_birth",
+    *         in="query",
+    *         description="date of birth of customer",
+    *         required=true,
+    *         example="1991/01/01",
+    *         @OA\Schema(
+    *             type="string"
+    *         )
+    *     ),
+    *     @OA\Parameter(
+    *         name="phone_number",
+    *         in="query",
+    *         description="phone number of customer",
+    *         required=true,
+    *         @OA\Schema(
+    *             type="string",
+    *             default="+989194747602"
+    *         )
+    *     ),
+    *     @OA\Parameter(
+    *         name="email",
+    *         in="query",
+    *         description="email of customer",
+    *         required=true,
+    *         @OA\Schema(
+    *             type="string"
+    *         )
+    *     ),
+    *     @OA\Parameter(
+    *         name="bank_account_number",
+    *         in="query",
+    *         description="bank account number of customer",
+    *         required=true,
+    *         @OA\Schema(
+    *             type="integer"
+    *         )
+    *     ),
+    *     @OA\Response(
+    *         response=201,
+    *         description="Returns json with customer=true if available",
+    *         @OA\JsonContent(
+    *             type="json",
+    *             example="{customer:[]}",
+    *             description="successful operation",
+    *         )
+    *     ),
+    *     @OA\Response(
+    *         response=422,
+    *         description="Parameter wont validate"
+    *     )
+    * )
+    *
+    */
     public function __invoke(StoreCustomerRequest $request): JsonResponse
     {
         $this->commandBus->dispatch(

@@ -25,7 +25,7 @@ final class CustomerCreator
         CustomerPhoneNumber $phoneNumber,
         CustomerEmail $email,
         CustomerBankAccountNumber $bankAccountNumber
-    ): void
+    ): ?Customer
     {
         $customer = $this->repository->findOneBy([
             CustomerModel::FIRST_NAME => $firstName->value,
@@ -45,7 +45,9 @@ final class CustomerCreator
             $email,
             $bankAccountNumber
         );
-        $this->repository->save($customer);
+        $customerModel = $this->repository->save($customer);
         $this->eventBus->publish(...$customer->pullDomainEvents());
+
+        return $customerModel;
     }
 }

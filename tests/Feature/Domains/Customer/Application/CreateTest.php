@@ -32,10 +32,6 @@ class CreateTest extends TestCase
 
     public function test_not_create_customer_when_already_added_by_firstName_lastName_dateOfBirth(): void
     {
-        $this->withoutExceptionHandling();
-
-        $this->expectException(CustomerAlreadyExists::class);
-
         CustomerModel::factory()->create([
             CustomerModel::FIRST_NAME => $name = fake()->firstName(),
             CustomerModel::LAST_NAME =>  $lastName = fake()->lastName(),
@@ -51,20 +47,18 @@ class CreateTest extends TestCase
             CustomerModel::BANK_ACCOUNT_NUMBER =>  BankAccountValueObject::random(),
             CustomerModel::PHONE_NUMBER => $this->phoneNumber,
         ]);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function test_not_create_customer_when_entered_email_not_unique(): void
     {
-        $this->withoutExceptionHandling();
-
-        $this->expectException(EloquentException::class);
-
         CustomerModel::factory()->create([
             CustomerModel::EMAIL => $email = fake()->email(),
             CustomerModel::PHONE_NUMBER => $this->phoneNumber,
         ]);
 
-        $this->postJson(route('customers.store'), $data = [
+        $response = $this->postJson(route('customers.store'), $data = [
             CustomerModel::FIRST_NAME =>  fake()->firstName(),
             CustomerModel::LAST_NAME =>  fake()->lastName(),
             CustomerModel::DATE_OF_BIRTH =>  fake()->date('Y-m-d'),
@@ -72,6 +66,8 @@ class CreateTest extends TestCase
             CustomerModel::BANK_ACCOUNT_NUMBER =>  BankAccountValueObject::random(),
             CustomerModel::PHONE_NUMBER => $this->phoneNumber,
         ]);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function test_not_create_customer_when_an_invalid_bank_account_number_entered(): void

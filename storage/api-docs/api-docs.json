@@ -5,34 +5,278 @@
         "version": "1.0"
     },
     "paths": {
-        "customers": {}
-    },
-    "components": {
-        "responses": {
-            "JsonResponse": {
-                "description": "Save Customer"
+        "/api/v1/customers": {
+            "get": {
+                "tags": [
+                    "customers"
+                ],
+                "summary": "Show a list of customers",
+                "description": "Show a list of customers",
+                "operationId": "90aabc6af8dedd98d90e247307e143fc",
+                "responses": {
+                    "200": {
+                        "description": "Returns array json of customers",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "successful operation",
+                                    "type": "json"
+                                },
+                                "example": "{customers:[]}"
+                            }
+                        }
+                    }
+                }
             },
-            "200": {
-                "description": "OK"
+            "post": {
+                "tags": [
+                    "customers"
+                ],
+                "summary": "Create a new customer",
+                "description": "Create a new customer",
+                "operationId": "5b760c54850ba4f7b3f0578440086ba4",
+                "parameters": [
+                    {
+                        "name": "first_name",
+                        "in": "query",
+                        "description": "first name of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "last name of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "date_of_birth",
+                        "in": "query",
+                        "description": "date of birth of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1991/01/01"
+                    },
+                    {
+                        "name": "phone_number",
+                        "in": "query",
+                        "description": "phone number of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "+989194747602"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "bank_account_number",
+                        "in": "query",
+                        "description": "bank account number of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Returns json with customer=true if available",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "successful operation",
+                                    "type": "json"
+                                },
+                                "example": "{customer:[]}"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Parameter wont validate"
+                    }
+                }
             }
         },
-        "parameters": {
-            "id": {
-                "name": "id",
-                "in": "path",
-                "description": "Parameter with mutliple examples",
-                "required": true,
-                "schema": {
-                    "type": "string"
-                },
-                "examples": {
-                    "int": {
-                        "summary": "An int value.",
-                        "value": "1"
+        "/api/v1/customers/{id}": {
+            "get": {
+                "tags": [
+                    "customers"
+                ],
+                "summary": "Show a customer",
+                "description": "Show a customer",
+                "operationId": "edf2ce74053647d25fa22339003157d6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns empty json if success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "successful operation",
+                                    "type": "json"
+                                },
+                                "example": "{customer:[]}"
+                            }
+                        }
                     },
-                    "uuid": {
-                        "summary": "An UUID value.",
-                        "value": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                    "500": {
+                        "description": "Customer not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "customers"
+                ],
+                "summary": "Delete a customer",
+                "description": "Delete a customer",
+                "operationId": "c02cc0f444b7a94f35c95b6f169fd893",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Returns empty json if success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "successful operation",
+                                    "type": "json"
+                                },
+                                "example": "{customer:[]}"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Customer not found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "customers"
+                ],
+                "summary": "Create a new customer",
+                "description": "Create a new customer",
+                "operationId": "2870525a0a6d29856396edf1598c652f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "query",
+                        "description": "first name of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "last name of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "date_of_birth",
+                        "in": "query",
+                        "description": "date of birth of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "1991/01/01"
+                    },
+                    {
+                        "name": "phone_number",
+                        "in": "query",
+                        "description": "phone number of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "+989194747602"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "bank_account_number",
+                        "in": "query",
+                        "description": "bank account number of customer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns json with customer=true if available",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "successful operation",
+                                    "type": "json"
+                                },
+                                "example": "{customer:[]}"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Customer not found"
+                    },
+                    "422": {
+                        "description": "Parameter wont validate"
                     }
                 }
             }

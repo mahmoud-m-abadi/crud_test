@@ -8,7 +8,7 @@ use App\Domains\Shared\Domain\Rules\BankAccountNumberRule;
 use App\Domains\Shared\Domain\Rules\PhoneNumberRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomerRequest extends FormRequest
+class UpdateCustomerRequest extends FormRequest
 {
     public function rules()
     {
@@ -20,7 +20,8 @@ class StoreCustomerRequest extends FormRequest
                 'max:50',
                 new AlreadyExistCustomerRule(
                     $this->get(CustomerModel::LAST_NAME),
-                    $this->get(CustomerModel::DATE_OF_BIRTH)
+                    $this->get(CustomerModel::DATE_OF_BIRTH),
+                    $this->id
                 )
             ],
             CustomerModel::LAST_NAME => [
@@ -34,7 +35,7 @@ class StoreCustomerRequest extends FormRequest
                 'email',
                 'min:5',
                 'max:60',
-                sprintf('unique:%s,%s', CustomerModel::TABLE, CustomerModel::EMAIL)
+                sprintf('unique:%s,%s,' . $this->id, CustomerModel::TABLE, CustomerModel::EMAIL)
             ],
             CustomerModel::DATE_OF_BIRTH => [
                 'required',

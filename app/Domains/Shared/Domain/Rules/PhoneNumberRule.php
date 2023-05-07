@@ -2,12 +2,23 @@
 
 namespace App\Domains\Shared\Domain\Rules;
 
+use App\Domains\Shared\Infrastructure\Services\GooglePhoneValidationInterface;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
 
 class PhoneNumberRule implements ValidationRule
 {
+    /**
+     * @var mixed
+     */
+    private mixed $phoneVerifier;
+
+    public function __construct()
+    {
+        $this->phoneVerifier = app(GooglePhoneValidationInterface::class);
+    }
+
     /**
      * Run the validation rule.
      *
@@ -17,15 +28,9 @@ class PhoneNumberRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
+        $number = $this->phoneVerifier->parse($value, "IR");
 
-        try {
-            $number = $phoneUtil->parse($value, "IR");
-        } catch (\libphonenumber\NumberParseException $e) {
-            $fail('The :attribute must be a valid number.');
-        }
-
-        if (! $phoneUtil->isValidNumber($number)) {
+        if (! $this->phoneVerifier->isValidNumber($number)) {
             $fail('The :attribute must be a valid number.');
         }
     }

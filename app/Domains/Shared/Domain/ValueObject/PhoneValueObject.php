@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Domains\Shared\Domain\ValueObject;
 
+use App\Domains\Shared\Infrastructure\Services\GooglePhoneValidationInterface;
 use InvalidArgumentException;
 
 abstract class PhoneValueObject
@@ -42,18 +43,10 @@ abstract class PhoneValueObject
      */
     public static function isValid(string $value): bool
     {
-        $phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
+        $phoneVerifier = app(GooglePhoneValidationInterface::class);
+        $number = $phoneVerifier->parse($value, "IR");
 
-        try {
-            $number = $phoneUtil->parse($value, "IR");
-        } catch (\libphonenumber\NumberParseException $e) {
-            throw new \Exception(
-                $e->getMessage(),
-                $e->getCode()
-            );
-        }
-
-        return $phoneUtil->isValidNumber($number);
+        return $phoneVerifier->isValidNumber($number);
     }
 
     public static function random()
