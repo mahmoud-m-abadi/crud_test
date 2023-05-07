@@ -11,7 +11,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{asset('build/assets/app-64b4dcf9.css')}}">
+        <link rel="stylesheet" href="{{asset('build/assets/app.css')}}">
         @livewireStyles
         @livewireScripts
     </head>
@@ -28,7 +28,7 @@
                 @livewire('list-customer')
             </div>
         </div>
-        <script src="{{asset('build/assets/app-429f1c90.js')}}" type="text/javascript"></script>
+        <script src="{{asset('build/assets/app.js')}}" type="text/javascript"></script>
         @livewire('notifications')
     </body>
 </html>
